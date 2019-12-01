@@ -3,6 +3,8 @@ package ImageHoster.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 //@Entity annotation specifies that the corresponding class is a JPA entity
 @Entity
@@ -32,8 +34,8 @@ public class User {
     //Below annotation indicates that the name of the column in 'users' table referring the primary key in 'user_profile' table will be 'profile_id'
     @JoinColumn(name = "profile_id")
     private UserProfile profile;
-
-
+    
+    
     //The 'users' table is referenced by the 'images' table
     //The table (primary key) is referenced by the 'user' field in the 'images' table
     //cascade = CascadeType.REMOVE specifies that if a record in 'users' table is deleted, then all the records in 'images' table associated to that particular record in 'users' table will be deleted first and then the record in the 'users' table will be deleted
@@ -80,5 +82,7 @@ public class User {
     public void setImages(List<Image> images) {
         this.images = images;
     }
+    
+    
 }
 
